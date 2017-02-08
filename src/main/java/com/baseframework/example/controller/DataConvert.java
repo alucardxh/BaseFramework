@@ -2,6 +2,7 @@ package com.baseframework.example.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.baseframework.example.pojo.Student;
+import com.baseframework.utils.SpringContextUtils;
 import com.baseframework.utils.XStreamPlus;
 import com.thoughtworks.xstream.XStream;
 
 @Controller
 public class DataConvert {
 	
-	
+
 	/**
 	 * json字符串对象互转
 	 * @return
@@ -73,7 +75,20 @@ public class DataConvert {
 		System.out.println(s1);
 		//xml字符串------>对象
 		Student s = xp.fromXML(s1);
+		System.out.println(SpringContextUtils.getBean("student")+"*****************");
 		return s1;
 	}
-
+	
+	
+	/**
+	 * 获取spring容器中的bean对象
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/bean")
+	public Object getBean(HttpServletRequest request, Model model) {
+		return SpringContextUtils.getBean("student");
+	}
 }

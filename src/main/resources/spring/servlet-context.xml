@@ -19,7 +19,7 @@
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+	
 	<!-- 定义velocity视图解析器 -->
 	<!-- <bean id="velocityConfig"
 		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
