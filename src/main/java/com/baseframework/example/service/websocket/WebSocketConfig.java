@@ -12,12 +12,21 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
 	
+	/**
+	 * webService处理器
+	 */
 	@Autowired
 	private WebSocketHandler webSocketHandler;
 	
+	/**
+	 * webService拦截器
+	 */
 	@Autowired
 	private WebSocketHandshakeInterceptor webSocketHandshakeInterceptor;
 	
+	/**
+	 * HttpSession转webServiceSession拦截器
+	 */
 	@Autowired
 	private H2WSSessionInterceptor h2WSSessionInterceptor;
 	

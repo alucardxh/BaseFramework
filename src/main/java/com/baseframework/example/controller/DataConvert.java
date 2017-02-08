@@ -22,7 +22,7 @@ public class DataConvert {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/json")
-	public String getJSON(){
+	public Student getJSON(){
 		Student student = new Student();
 		student.setAge("1");
 		student.setName("success");
@@ -34,7 +34,7 @@ public class DataConvert {
 		//json字符串------>对象
 		Student student1 = JSON.parseObject(jsonStudent, Student.class);
 		System.out.println(student1);
-		return null;
+		return student1;
 	}
 	
 	/**
@@ -43,8 +43,7 @@ public class DataConvert {
 	 * @param model
 	 * @return
 	 */
-	@ResponseBody
-	@RequestMapping(value = "/getXml")
+	@RequestMapping(value = "/xml")
 	public String getJson(HttpServletRequest request, Model model) {
 		Student student = new Student();
 		student.setAge("1");
@@ -58,19 +57,23 @@ public class DataConvert {
 		//对象------>xml字符串
 		String xmlStudent = xStream.toXML(student);
 		System.out.println(xmlStudent);
+		
 		//xml字符串------>对象
 		Student student1 = (Student) xStream.fromXML(xmlStudent);
 		System.out.println(student1);
 		
 		
-		//增强版
+		//设置增强版XStream
 		XStreamPlus<Student> xp = new XStreamPlus<Student>();
 		xp.alias("xml", Student.class);
+		
 		//对象------>xml字符串
 		String s1 = xp.toXML(student);
+		
+		System.out.println(s1);
 		//xml字符串------>对象
 		Student s = xp.fromXML(s1);
-		return null;
+		return s1;
 	}
 
 }
