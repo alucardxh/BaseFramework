@@ -38,6 +38,7 @@ public class SystemWebSocketHandler implements  WebSocketHandler{
 
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
 		System.out.println("WebSocketHandler handleMessage");
+		System.out.println(message.getPayload().toString());
 		session.sendMessage(new TextMessage(message.getPayload().toString()));
 		
 	}
@@ -45,7 +46,7 @@ public class SystemWebSocketHandler implements  WebSocketHandler{
 
 	public void handleTransportError(WebSocketSession arg0, Throwable arg1) throws Exception {
 		System.out.println("WebSocketHandler handleTransportError");
-		// TODO Auto-generated method stub
+		
 		
 	}
 

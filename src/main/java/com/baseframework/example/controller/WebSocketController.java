@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class WebSocketController {
 	
-	@ResponseBody
-	@RequestMapping(value = "/test")
+	@RequestMapping(value = "/webSocket")
 	public String test(){
-		return "ok";
+		return "example/webSocket";
 	}
 	
 }

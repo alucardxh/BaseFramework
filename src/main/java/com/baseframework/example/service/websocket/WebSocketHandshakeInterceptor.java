@@ -14,14 +14,14 @@ public class WebSocketHandshakeInterceptor implements HandshakeInterceptor {
 
 
 	public void afterHandshake(ServerHttpRequest arg0, ServerHttpResponse arg1, WebSocketHandler arg2, Exception arg3) {
-		System.out.println("HandshakeInterceptor afterHandshake");
+		System.out.println("HandshakeInterceptor(握手拦截器)-afterHandshake");
 		
 	}
 
 	
 	public boolean beforeHandshake(ServerHttpRequest arg0, ServerHttpResponse arg1, WebSocketHandler arg2,
 			Map<String, Object> arg3) throws Exception {
-		System.out.println("HandshakeInterceptor beforeHandshake");
+		System.out.println("HandshakeInterceptor(握手拦截器)-beforeHandshake");
 		return true;
 	}
 

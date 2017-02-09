@@ -18,13 +18,13 @@ public class H2WSSessionInterceptor extends HttpSessionHandshakeInterceptor {
 	@Override
 	public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
 			Exception ex) {
-	System.out.println("afterHandshake握手前");
+	System.out.println("HttpSessionHandshakeInterceptor(httpSession握手拦截器)-afterHandshake");
 	}
 
 	@Override
 	public boolean beforeHandshake(ServerHttpRequest arg0, ServerHttpResponse arg1, WebSocketHandler arg2,
 			Map<String, Object> arg3) throws Exception {
-		System.out.println("beforeHandshake握手后");
+		System.out.println("HttpSessionHandshakeInterceptor(httpSession握手拦截器)-beforeHandshake");
 		return super.beforeHandshake(arg0, arg1, arg2, arg3);
 	}
 	
