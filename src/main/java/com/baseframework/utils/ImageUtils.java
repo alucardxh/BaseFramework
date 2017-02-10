@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Image {
+public class ImageUtils {
 	public static void ImageCut(String srcPath, String targetPath) {
 		try {
 			BufferedImage image = ImageIO.read(new File(srcPath));
