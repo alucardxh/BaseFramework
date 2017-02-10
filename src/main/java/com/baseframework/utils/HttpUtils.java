@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class SystemUtils {
+public class HttpUtils {
 	public static String getRemoteIP(HttpServletRequest request) {
 		String ip;
 		ip = request.getHeader("X-Real-IP");
