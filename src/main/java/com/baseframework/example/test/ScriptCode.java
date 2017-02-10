@@ -17,7 +17,7 @@ public class ScriptCode {
 
 	private static final String URL = "http://ccc.spdb.com.cn/news/qgxhd/index***.shtml";
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		HttpClient httpClient = HttpClientUtils.getHttpClient();
 
 		String url = "";
@@ -38,7 +38,15 @@ public class ScriptCode {
 				System.out.println("正在爬第" + p + "页," + j + "条信息");
 				Element e1 = element.child(1).child(0);
 				String discountPath = e1.attr("href");
-				String detailResp = HttpClientUtils.doGet(httpClient, "http://ccc.spdb.com.cn/" + discountPath);
+				System.out.println(discountPath);
+				
+				String ss="";
+				if(discountPath.endsWith("html")){
+					ss=discountPath;
+				}else{
+					ss="http://ccc.spdb.com.cn/" + discountPath;
+				}
+				String detailResp = HttpClientUtils.doGet(httpClient,ss);
 				Document doc1 = Jsoup.parse(detailResp);
 				String discountName = e1.text();
 				String fileName = discountName.replaceAll("(\\\\)|(\\/)|(\\:)|(\\*)|(\\?)|(\\\")|(\\<)|(\\>)|(\\|)",
@@ -56,9 +64,6 @@ public class ScriptCode {
 					String imgName = discountImg.substring(discountImg.lastIndexOf("/") + 1,
 							discountImg.lastIndexOf("."));
 					String suffix = discountImg.split("\\.")[discountImg.split("\\.").length - 1];
-					// if(StringUtils.equals(suffix, "js")){
-					// continue;
-					// }
 					String s = "";
 					if (discountPath.endsWith("/")) {
 						s = discountPath;
@@ -73,12 +78,15 @@ public class ScriptCode {
 							s = discountPath + "/";
 						}
 					}
-
 					System.out.println("discount/" + fileName + "/" + imgName + "." + suffix);
 					System.out.println("http://ccc.spdb.com.cn" + s + discountImg);
-
-					FileUtils.writeByteArrayToFile(new File("discount/" + fileName + "/" + imgName + "." + suffix),
-							HttpClientUtils.getFile(httpClient, "http://ccc.spdb.com.cn" + s + discountImg));
+					try {
+						FileUtils.writeByteArrayToFile(new File("discount/" + fileName + "/" + imgName + "." + suffix),
+								HttpClientUtils.getFile(httpClient, "http://ccc.spdb.com.cn" + s + discountImg));
+					} catch (Exception e) {
+						e.printStackTrace();
+						continue;
+					}
 
 				}
 			}
