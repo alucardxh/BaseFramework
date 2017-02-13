@@ -53,7 +53,7 @@ public class CreateTableName {
 	}
 	
 	/**
-	 * 将字符串转换为驼峰命名法
+	 * 将带下划线字符串转换为驼峰命名法
 	 * @param s
 	 * @return
 	 */
