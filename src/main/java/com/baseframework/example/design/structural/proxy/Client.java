@@ -10,10 +10,10 @@ public class Client {
 
 	public static void main(String[] args) {
 		
-		ProxyPlayARCGame ppa = new ProxyPlayARCGame(new KOF97());
+		ARCGame daili = new XiaodiPlayKOF97();
 		
-		PlayARCBuilder pab = new PlayARCBuilder(ppa);
-		
-		pab.playARC();
+		daili.buyCoin();
+		daili.putCoin();
+		daili.play();
 	}
 }

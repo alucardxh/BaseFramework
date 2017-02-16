@@ -1,11 +1,11 @@
 package com.baseframework.example.design.structural.proxy;
 
-public class ProxyPlayARCGame implements ARCGame{
+public class XiaodiPlayKOF97 implements ARCGame{
 	
 	private ARCGame ag;
 	
-	public ProxyPlayARCGame(ARCGame ag) {
-		this.ag = ag;
+	public XiaodiPlayKOF97() {
+		ag = new KOF97();
 	}
 
 	@Override
