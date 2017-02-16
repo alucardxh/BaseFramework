@@ -1,4 +1,4 @@
-package com.baseframework.example.test;
+package com.baseframework.example.spider;
 
 import java.io.File;
 import java.io.IOException;
