@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -10,30 +9,29 @@
 				       	http://www.springframework.org/schema/context
 				       	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- 加载配置文件 -->
-	<bean id="placeholder"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<context:component-scan base-package="com.baseframework.example.service" />
+
+	<!-- 读取jdbc.properties -->
+	<!-- <context:property-placeholder location="classpath:properties/jdbc.properties"
+		ignore-unresolvable="true" /> -->
+	<bean id="placeholder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:properties/jdbc.properties</value>
 			</list>
 		</property>
-	</bean> 
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
 
 	<!-- 激活自动代理功能 -->
-	<!-- <aop:aspectj-autoproxy proxy-target-class="true" />  -->
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
 
 	<!-- 扫描切面包路径 -->
-	<!-- <bean id="logAspect" class="com.baomidou.framework.aop.LogAspect">
-		<property name="logPoint">
-			<bean class="com.baomidou.springwind.service.impl.SysLogServiceImpl" />
-		</property>
-	</bean>
-	<aop:config>
-		<aop:aspect ref="logAspect">
-			<aop:pointcut id="logPointCut" expression="@annotation(com.baomidou.framework.annotations.Log)" />
-			<aop:around pointcut-ref="logPointCut" method="saveLog" />
-		</aop:aspect>
-	</aop:config> -->
+	<!-- <bean id="logAspect" class="com.baomidou.framework.aop.LogAspect"> 
+		<property name="logPoint"> <bean class="com.baomidou.springwind.service.impl.SysLogServiceImpl" 
+		/> </property> </bean> <aop:config> <aop:aspect ref="logAspect"> <aop:pointcut 
+		id="logPointCut" expression="@annotation(com.baomidou.framework.annotations.Log)" 
+		/> <aop:around pointcut-ref="logPointCut" method="saveLog" /> </aop:aspect> 
+		</aop:config> -->
 
 </beans>

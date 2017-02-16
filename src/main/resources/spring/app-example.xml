@@ -1,13 +1,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans   
-    					http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+    					http://www.springframework.org/schema/beans/spring-beans.xsd
+    					http://www.springframework.org/schema/util 
+    					http://www.springframework.org/schema/util/spring-util.xsd">
+    					
 	<bean id="student" class="com.baseframework.example.pojo.Student">
 		<property name="name" value="aaa" />
 		<property name="age" value="bbb" />
 		<property name="src" value="ccc" />
 	</bean>
-
-	<bean id="springContextUtils" class="com.baseframework.utils.SpringContextUtils" />
+	
+	<!-- 加载Properties文件 -->
+	<util:properties id="propTest" location="classpath:properties/aaa.properties" />
+	
+	<!-- 加载Properties文件 -->
+	<bean id="vipList"
+		class="com.baseframework.utils.SpringPropertiesUtils">
+		<!-- <property name="order" value="2" />
+    	<property name="ignoreUnresolvablePlaceholders" value="false" /> -->
+		<property name="locations">
+			<list>
+				<value>classpath:properties/vipcardbin.properties</value>
+			</list>
+		</property>
+	</bean>
 </beans>

@@ -9,10 +9,9 @@
 				       	http://www.springframework.org/schema/context/spring-context.xsd
 				       	http://www.springframework.org/schema/mvc
 				       	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-  
+				       	
 	<!-- 扫描 controller -->
 	<context:component-scan base-package="com.baseframework.example.controller"/>
-	<context:component-scan base-package="com.baseframework.example.service"/>
 	
 	<!-- 定义jsp跳转的文件的前后缀 -->
 	<bean id="viewResolver"
@@ -20,6 +19,9 @@
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<!-- 注册从spring上下文中获取bean的工具 -->
+	<bean id="springContextUtils" class="com.baseframework.utils.SpringContextUtils" />	
 	
 	<!-- 定义velocity视图解析器 -->
 	<!-- <bean id="velocityConfig"
