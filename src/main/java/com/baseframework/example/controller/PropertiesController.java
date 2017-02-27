@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baseframework.example.pojo.Student;
+import com.baseframework.example.pojo.Teacher;
 import com.baseframework.example.service.properties.PropService;
 import com.baseframework.utils.SpringContextUtils;
 import com.baseframework.utils.SpringPropertiesUtils;
@@ -88,7 +89,7 @@ public class PropertiesController {
 	@ResponseBody
 	@RequestMapping(value = "/bean")
 	public Object getBean(HttpServletRequest request, Model model) {
-		Student student = SpringContextUtils.getBean(Student.class);
+		Teacher student = SpringContextUtils.getBean(Teacher.class);
 		return student;
 	}
 

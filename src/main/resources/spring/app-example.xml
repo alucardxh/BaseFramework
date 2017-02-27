@@ -13,6 +13,15 @@
 		<property name="src" value="ccc" />
 	</bean>
 	
+	
+	
+	
+	<!-- <bean id="teacher" class="com.baseframework.example.pojo.Teacher">
+		<constructor-arg type="java.lang.String" value="hello"></constructor-arg>
+    	<constructor-arg type="java.lang.String" value="world"></constructor-arg>
+    	<constructor-arg type="java.lang.String" value="f"></constructor-arg>
+	</bean> -->
+	
 	<!-- 加载Properties文件 -->
 	<util:properties id="propTest" location="classpath:properties/aaa.properties" />
 	
