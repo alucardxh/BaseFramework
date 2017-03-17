@@ -12,7 +12,7 @@ import com.baseframework.utils.HttpClientUtils;
 
 
 public class TulingApiProcess {
-	static String apiKey = "";
+	static String apiKey = "x";
 	static String url = "http://www.tuling123.com/openapi/api";
 
 	public static Map<String, Object> getChatAIResponse(String content, String userId)
