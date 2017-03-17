@@ -72,6 +72,15 @@
 		<error-code>500</error-code>
 		<location>/error/500.html</location>
 	</error-page> -->
+	
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
 
 	<!-- 欢迎界面 -->
 	<welcome-file-list>

@@ -1,6 +1,8 @@
 package com.baseframework.example.pojo;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
 	private String id;
 	
 	private String name;
@@ -11,6 +13,10 @@ public class Student {
 	
 	public String getId() {
 		return id;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", src=" + src + "]";
 	}
 	public void setId(String id) {
 		this.id = id;

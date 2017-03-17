@@ -11,7 +11,7 @@ public class Test {
 	
 	public static int count1=0;
 	
-	
+	public static Integer sum =0;
 	
 	public static StringBuffer sb = new StringBuffer();
 	public static StringBuilder sb1 = new StringBuilder();
@@ -29,6 +29,10 @@ public class Test {
        
     }
  
+    public static int add(){
+    	return sum++;
+    }
+    
     public static void main(String[] args) {
     	
  
@@ -47,6 +51,12 @@ public class Test {
         s.shutdown();
         System.out.println("*"+Thread.currentThread().getName());
     }
+	public Integer getSum() {
+		return sum++;
+	}
+	public void setSum(Integer sum) {
+		this.sum = sum;
+	}
     
     
 

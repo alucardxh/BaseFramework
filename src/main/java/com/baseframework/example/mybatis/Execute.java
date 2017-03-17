@@ -13,7 +13,7 @@ public class Execute {
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
 			StudentMapper sm = sqlSession.getMapper(StudentMapper.class);
-			Student s = sm.selectStudentById("2");
+			Student s = sm.selectStudentById("3");
 			System.out.println(s);
 		} catch (Exception e) {
 			e.printStackTrace();

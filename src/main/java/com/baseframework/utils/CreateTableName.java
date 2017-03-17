@@ -14,7 +14,7 @@ public class CreateTableName {
 	
 	private static Connection getConn() {
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://192.168.1.211/cardrights?useUnicode=true&characterEncoding=UTF-8";
+		String url = "jdbc:mysql://192.168.1.211/unionpay_info?useUnicode=true&characterEncoding=UTF-8";
 		String username = "root";
 		String password = "reallove";
 		Connection conn = null;
@@ -40,7 +40,7 @@ public class CreateTableName {
 		ResultSet tabs = dbMetaData
 				.getTables(null, null, null, types/* 只要表就好了 */);
 
-		List tables = new ArrayList();
+		List<Object> tables = new ArrayList<Object>();
 		while (tabs.next()) {
 			// 只要表名这一列
 			tables.add(tabs.getObject("TABLE_NAME"));
