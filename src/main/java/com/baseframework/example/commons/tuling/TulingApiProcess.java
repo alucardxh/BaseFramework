@@ -12,7 +12,7 @@ import com.baseframework.utils.HttpClientUtils;
 
 
 public class TulingApiProcess {
-	static String apiKey = "b47fd34b47dd469cb57b752fc2eeedfc";
+	static String apiKey = "";
 	static String url = "http://www.tuling123.com/openapi/api";
 
 	public static Map<String, Object> getChatAIResponse(String content, String userId)
@@ -44,7 +44,7 @@ public class TulingApiProcess {
 		// HttpRep rep = HttpUtil.doPost(json, url);
 		//
 		// System.out.println(rep.getContent());
-		String[] keys = { "b47fd34b47dd469cb57b752fc2eeedfc", "b47fd34b47dd469cb57b752fc2eeedfc" };
+		String[] keys = { "", "" };
 		String begin = "CCTV";
 		int index = 0;
 		while (true) {
