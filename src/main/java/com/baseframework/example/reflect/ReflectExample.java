@@ -4,6 +4,8 @@ import com.baseframework.example.pojo.Student;
 
 public class ReflectExample extends Student implements Runnable {
 	
+	private static final long serialVersionUID = -6326727393502913112L;
+
 	private String id;
 	
 	private String name;
