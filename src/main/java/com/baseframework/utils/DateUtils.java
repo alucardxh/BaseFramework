@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class DateUtils {
 
@@ -566,14 +569,14 @@ public class DateUtils {
 		return dateFm.format(date);
 	}
 
-	public static void main(String[] args) throws Exception {
-		List<String> list = getMonth(2017, 1);
-		for (String string : list) {
-			System.out.println(string);
-		}
-		System.out.println(list.size() + "*************");
-	}
 
+	/**
+	 * 获取某个月的日历数量
+	 * @param year
+	 * @param month
+	 * @return
+	 * @throws Exception
+	 */
 	public static List<String> getMonth(int year, int month) throws Exception {
 		int week = getMonthFirstDayWeek(year, month);
 		List<String> list = new ArrayList<String>();
@@ -675,6 +678,28 @@ public class DateUtils {
 			list.add(String.valueOf(i));
 		}
 		return list;
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception {
+		long start = System.currentTimeMillis();
+		Map<String,List<String>> map = new HashMap<String,List<String>>();
+		for (int i = 2017; i <= 2117; i++) {
+			for (int j = 1; j <=12; j++) {
+				List<String> list = getMonth(i, j);
+				if(String.valueOf(j).length()<2){
+					map.put(i+"0"+j, list);
+				}else{
+					map.put(i+""+j, list);
+				}
+			}
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(end-start);
+		/*for (Entry<String, List<String>> entry : map.entrySet()) {
+			System.out.println(entry.getKey()+"________"+entry.getValue());
+		}*/
 	}
 
 }
