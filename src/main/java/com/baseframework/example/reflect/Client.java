@@ -98,8 +98,14 @@ public class Client {
 					        String name = (String)getName.invoke(rd);
 					        
 					        System.out.println(name);
-					    	
-
+				/**
+				 * 获取类加载
+				 * 
+				 */
+				ReflectExample reflectExample = new ReflectExample();
+				String ClassLoader = reflectExample.getClass().getClassLoader().getClass().getName();
+				System.out.println(ClassLoader);
+				
 	}
 
 }
