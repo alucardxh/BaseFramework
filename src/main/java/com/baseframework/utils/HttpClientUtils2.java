@@ -47,20 +47,7 @@ public class HttpClientUtils2 {
 		connectionManager = new PoolingHttpClientConnectionManager();
 		connectionManager.setDefaultMaxPerRoute(defaultMaxConnPerHost);
 		connectionManager.setMaxTotal(defaultMaxTotalConn);
-
-		/*IdleConnectionTimeoutThread ict = new IdleConnectionTimeoutThread();
-		ict.addConnectionManager(connectionManager);
-		ict.setConnectionTimeout(defaultIdleConnTimeout);
-
-		ict.start();*/
-		
-		
 		IdleConnectionMonitorThread icmt = new IdleConnectionMonitorThread(connectionManager);
-		
-		
-		connectionManager.closeExpiredConnections();
-		//关闭空闲超过30秒的连接
-		connectionManager.closeIdleConnections(30, TimeUnit.SECONDS);
 	}
 
 	public static HttpClient getHttpClient() {
