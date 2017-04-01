@@ -107,5 +107,5 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven> 
 	<!-- 配置静态资源，直接映射到对应的文件夹，DispatcherServlet 不处理 -->
-	<mvc:resources mapping="/static/**" location="/static/" />
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
 </beans>
