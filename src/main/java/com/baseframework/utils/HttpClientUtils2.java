@@ -47,7 +47,7 @@ public class HttpClientUtils2 {
 		connectionManager = new PoolingHttpClientConnectionManager();
 		connectionManager.setDefaultMaxPerRoute(defaultMaxConnPerHost);
 		connectionManager.setMaxTotal(defaultMaxTotalConn);
-		IdleConnectionMonitorThread icmt = new IdleConnectionMonitorThread(connectionManager);
+		new IdleConnectionMonitorThread(connectionManager).start();
 	}
 
 	public static HttpClient getHttpClient() {

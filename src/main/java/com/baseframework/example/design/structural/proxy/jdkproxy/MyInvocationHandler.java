@@ -18,11 +18,11 @@ public class MyInvocationHandler implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		System.out.println("before-----------------------------");  
+		System.out.println("after-----------------------------");  
         // 程序执行  
-        Object result = method.invoke(target, args);  
+        Object result = method.invoke(target, args); 
         // 程序执行后加入逻辑，MethodAfterAdviceInterceptor  
-        System.out.println("after------------------------------");  
+        System.out.println("before------------------------------");  
         
         return result; 
 	}
