@@ -16,12 +16,17 @@
 	<!-- 定义jsp跳转的文件的前后缀 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/" />
+		<property name="prefix" value="/WEB-INF/example/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
 	<!-- 注册从spring上下文中获取bean的工具 -->
 	<bean id="springContextUtils" class="com.baseframework.utils.SpringContextUtils" />	
+	
+	<!-- 实现上传进度监听) -->  
+	<bean class="com.baseframework.example.uploadProgress.FileUploadProgressListener"/>
+	<!-- 支持上传文件(重写CommonsMultipartResolver来支持上传进度监听) -->  
+    <bean id="multipartResolver" class="com.baseframework.example.uploadProgress.CustomMultipartResolver"/>
 	
 	<!-- 定义velocity视图解析器 -->
 	<!-- <bean id="velocityConfig"
@@ -101,4 +106,6 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven> 
+	<!-- 配置静态资源，直接映射到对应的文件夹，DispatcherServlet 不处理 -->
+	<mvc:resources mapping="/static/**" location="/static/" />
 </beans>
