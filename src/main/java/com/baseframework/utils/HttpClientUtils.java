@@ -85,7 +85,6 @@ public class HttpClientUtils {
 			StringRequestEntity entity = new StringRequestEntity(json, "application/json", "utf-8");
 			httppost.setRequestEntity(entity);
 			httpClient.executeMethod(httppost);
-
 			if (httppost.getStatusCode() == HttpStatus.SC_OK) {
 				byte[] bytes = httppost.getResponseBody();
 				body = new String(bytes, "utf-8");
