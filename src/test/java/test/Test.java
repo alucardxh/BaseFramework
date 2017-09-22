@@ -1,32 +1,33 @@
 package test;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.util.List;
+
+import org.apache.http.client.HttpClient;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import com.baseframework.utils.HttpClientUtils2;
 
 public class Test {
-	public static void main(String[] args) throws UnknownHostException {
-
-		// InetAddress add = InetAddress.getByName("i158470d85.iok.la");
-
-		/*
-		 * ActiveMQConnectionFactory factory = new
-		 * ActiveMQConnectionFactory("tcp://i158470d85.iok.la:61616");
-		 * Connection connection = factory.createConnection();
-		 * connection.start();
-		 * 
-		 * Session session = connection.createSession(false,
-		 * Session.AUTO_ACKNOWLEDGE); Topic topic =
-		 * session.createTopic("myTopic.messages");
-		 * 
-		 * MessageConsumer consumer = session.createConsumer(topic);
-		 * consumer.setMessageListener(new MessageListener() { public void
-		 * onMessage(Message message) { TextMessage tm = (TextMessage) message;
-		 * try { System.out.println("Received message: " + tm.getText()); }
-		 * catch (JMSException e) { e.printStackTrace(); } } });
-		 */
-
-		String s = "asdasd???*** : * ?  < > |\"".replaceAll("(\\\\)|(\\/)|(\\:)|(\\*)|(\\?)|(\\\")|(\\<)|(\\>)|(\\|)", "");
+	public static void main(String[] args) {
+		
+		
+		
+		
+		HttpClient httpGet = HttpClientUtils2.getHttpClient();
+		String infoPage = HttpClientUtils2.doGet(httpGet, "http://www.meiguoshenpo.com/meiri/d195215.html");
+		Document infoPageDoc = Jsoup.parse(infoPage);
+		StringBuilder stringBuilder = new StringBuilder();
+		List<Element> Info = infoPageDoc.select(".show_cnt p").subList(1, 8);
+		for (Element element : Info) {
+			stringBuilder.append(element);
+		}
+		String s = stringBuilder.toString();
 		System.out.println(s);
+		String ss = s.replaceAll("<\\/?(?!br|p|/p)[^>]*>", "");
+		System.out.println(ss);
+
 
 	}
 }

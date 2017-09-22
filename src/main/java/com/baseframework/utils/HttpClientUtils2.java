@@ -4,6 +4,10 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -23,6 +27,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+
 
 public class HttpClientUtils2 {
 
@@ -47,7 +52,7 @@ public class HttpClientUtils2 {
 		connectionManager = new PoolingHttpClientConnectionManager();
 		connectionManager.setDefaultMaxPerRoute(defaultMaxConnPerHost);
 		connectionManager.setMaxTotal(defaultMaxTotalConn);
-		new IdleConnectionMonitorThread(connectionManager).start();
+		//new IdleConnectionMonitorThread(connectionManager).start();
 	}
 
 	public static HttpClient getHttpClient() {
@@ -212,6 +217,54 @@ public class HttpClientUtils2 {
 				notifyAll();
 			}
 		}
+	}
+	
+	
+	public static void main(String[] args) throws ScriptException {
+		 /*ScriptEngineManager sem = new ScriptEngineManager();    
+	     ScriptEngine engine = sem.getEngineByExtension("js");    
+	        try{    
+	            //直接解析    
+	            Object res = engine.eval("unescape('%u4E1C%u54F2%u65ED')");    
+	            System.out.println(res);    
+	        }catch(Exception ex){    
+	            ex.printStackTrace();    
+	        }    
+		
+	    String xh=engine.eval("escape('1333')").toString();
+		String name= engine.eval("escape('东哲旭')").toString();
+		String team=engine.eval("escape('all')").toString();
+		
+		HttpClient hc = HttpClientUtils2.getHttpClient();
+		String s = HttpClientUtils2.doGet(hc, "http://www.xa83zx.cn/kscx/search.asp?xh="+xh+"&stuname="+name+"&team="+team);
+		System.out.println(s);*/
+		
+		
+		
+		
+		ScriptEngineManager sem = new ScriptEngineManager();    
+	     ScriptEngine engine = sem.getEngineByExtension("js");    
+	       /* try{    
+	            //直接解析    
+	            Object res = engine.eval("unescape('%u4E1C%u54F2%u65ED')");    
+	            System.out.println(res);    
+	        }catch(Exception ex){    
+	            ex.printStackTrace();    
+	        }  */  
+		
+	    String xh=engine.eval("escape('1333')").toString();
+		String name= engine.eval("escape('东哲旭')").toString();
+		String team=engine.eval("escape('all')").toString();
+		
+		HttpClient hc = HttpClientUtils2.getHttpClient();
+		//String s = HttpClientUtils.doGet(hc, "http://www.xa83zx.cn/kscx/search.asp?xh="+xh+"&stuname="+name+"&team="+team);
+		
+		String s = HttpClientUtils2.doGet(hc, "http://www.xa83zx.cn/kscx/search.asp?xh="+xh+"&stuname="+name+"&team="+team);
+		
+		
+		
+		Object responStr=engine.eval("unescape('"+s+"')");
+		System.out.println(responStr);
 	}
 	
 	

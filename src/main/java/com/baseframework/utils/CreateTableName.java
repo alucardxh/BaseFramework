@@ -14,7 +14,7 @@ public class CreateTableName {
 	
 	private static Connection getConn() {
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://192.168.1.211/bloodsister?useUnicode=true&characterEncoding=UTF-8";
+		String url = "jdbc:mysql://192.168.0.211/ylpay?useUnicode=true&characterEncoding=UTF-8";
 		String username = "root";
 		String password = "reallove";
 		Connection conn = null;

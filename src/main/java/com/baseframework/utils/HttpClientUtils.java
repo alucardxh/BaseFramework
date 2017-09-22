@@ -3,6 +3,10 @@ package com.baseframework.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.HttpStatus;
@@ -17,6 +21,7 @@ import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.apache.commons.httpclient.util.IdleConnectionTimeoutThread;
+
 
 public class HttpClientUtils {
 
@@ -180,6 +185,32 @@ public class HttpClientUtils {
 			e.printStackTrace();
 		}
 		return body;
+	}
+	
+	public static void main(String[] args) throws ScriptException {
+		 ScriptEngineManager sem = new ScriptEngineManager();    
+	     ScriptEngine engine = sem.getEngineByExtension("js");    
+	       /* try{    
+	            //直接解析    
+	            Object res = engine.eval("unescape('%u4E1C%u54F2%u65ED')");    
+	            System.out.println(res);    
+	        }catch(Exception ex){    
+	            ex.printStackTrace();    
+	        }  */  
+		
+	    String xh=engine.eval("escape('1333')").toString();
+		String name= engine.eval("escape('东哲旭')").toString();
+		String team=engine.eval("escape('all')").toString();
+		
+		HttpClient hc = HttpClientUtils.getHttpClient();
+		String s = HttpClientUtils.doGet(hc, "http://www.xa83zx.cn/kscx/search.asp?xh="+xh+"&stuname="+name+"&team="+team);
+		
+		
+		
+		
+		
+		Object responStr=engine.eval("unescape('"+s+"')");
+		System.out.println(responStr);
 	}
 
 }

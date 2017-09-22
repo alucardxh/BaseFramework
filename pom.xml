@@ -232,6 +232,11 @@
 			<artifactId>commons-pool2</artifactId>
 			<version>2.4.2</version>
 		</dependency>
+		<dependency>
+		    <groupId>net.dongliu</groupId>
+		    <artifactId>apk-parser</artifactId>
+		    <version>2.2.0</version>
+		</dependency>
 		<!-- 七牛图片上传 -->
 		<dependency>
 			<groupId>com.qiniu</groupId>
@@ -276,6 +281,12 @@
 					<artifactId>solr-core</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<!-- netty通讯框架 -->
+		<dependency>
+		    <groupId>io.netty</groupId>
+		    <artifactId>netty-all</artifactId>
+		    <version>4.1.6.Final</version>
 		</dependency>
 		<!-- 拼音识别 -->
 		<dependency>

@@ -1,6 +1,9 @@
 package com.baseframework.example.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.baseframework.example.pojo.Student;
 import com.baseframework.utils.SpringContextUtils;
 import com.baseframework.utils.XStreamPlus;
@@ -77,5 +81,31 @@ public class DataConvert {
 		// xml字符串------>对象
 		Student s = xp.fromXML(s1);
 		return s1;
+	}
+	
+	public static void main(String[] args) {
+		List<Student> list = new ArrayList<Student>();
+		
+		Student student = new Student();
+		student.setAge("1");
+		student.setName("success");
+		
+		Student student2 = new Student();
+		student2.setAge("2");
+		student2.setName("success2");
+		list.add(student);
+		list.add(student2);
+		
+		String jsonStudent = JSON.toJSONString(list);
+		System.out.println(jsonStudent);
+		
+		
+		
+		List<Student> lists = JSONArray.parseArray(jsonStudent, Student.class);
+		
+		
+		
+		
+		
 	}
 }
