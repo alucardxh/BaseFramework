@@ -10,7 +10,6 @@ public class Test {
 		try (ApkFile apkFile = new ApkFile(new File("C:/Users/Administrator/Desktop/app-debug.apk"))) {
 			String  versionCode  = apkFile.getApkMeta().getVersionCode().toString();
 			System.out.println(versionCode);
-			System.out.println(versionCode);
 		}
 	}
 
